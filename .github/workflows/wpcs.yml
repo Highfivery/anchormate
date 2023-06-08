@@ -20,9 +20,9 @@ jobs:
           phpcs_bin_path: 'phpcs' # Custom PHPCS bin path
           use_local_config: 'false' # Use local config if available
           extra_args: '--report-json=./phpcs.json'
-        - name: Update summary
-          run: |
-            npm i -g github:10up/phpcs-json-to-md
-            phpcs-json-to-md --path ./phpcs.json --output ./phpcs.md
-            cat phpcs.md >> $GITHUB_STEP_SUMMARY
-          if: always()
+      - name: Update summary
+        run: |
+          npm i -g github:10up/phpcs-json-to-md
+          phpcs-json-to-md --path ./phpcs.json --output ./phpcs.md
+          cat phpcs.md >> $GITHUB_STEP_SUMMARY
+        if: always()
